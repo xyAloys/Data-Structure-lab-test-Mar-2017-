@@ -1,0 +1,136 @@
+rCountArray
+
+int rCountArray(int array[], int n, int a)
+{
+    if(n == 0)
+        return 0;
+    else if(array[0] == a)
+        return 1+rCountArray(&array[1], n - 1, a);
+    else
+        return rCountArray(&array[1], n - 1, a);
+}
+
+
+
+
+
+transpose
+
+void transpose(int M[SIZE][SIZE])
+{
+    int i, j;
+    for(i = 0; i < SIZE; i++){
+        for(j = i; j < SIZE; j++){
+            swap(&M[i][j], &M[j][i]);
+        }
+    }
+}
+
+
+
+findTarget
+
+
+int findTarget(char *target, char nameptr[SIZE][80], int size)
+{
+    int i, re = -1;
+    for(i = 0; i < size; i++){
+        if(strcmp(target, nameptr[i]) == 0){
+            re = i;
+            break;
+        }
+        else
+            continue;
+    }
+    return re;
+}
+
+
+
+
+encodeChar
+
+
+void encodeChar(Rule table[5], char *s, char *t)
+{
+    int i, j;
+    for(i = 0; i < strlen(s); i++){
+        for(j = 0; j < 4; j++){
+            if(s[i] == table[j].source){
+                t[i] = table[j].code;
+                break;
+            }
+            else
+                t[i] = s[i];
+        }
+    }
+    t[i] = '\0';
+}
+
+countOddDigits
+
+int countOddDigits1(int num)
+{
+    int count = 0;
+   while(num > 0){
+       if((num % 10)%2 == 1)
+           count++;
+       num = num/10;
+   }
+    return count;
+}
+void countOddDigits2(int num, int *result)
+{
+    *result = 0;
+    while(num > 0){
+        if((num % 10)%2 == 1)
+            *result = *result + 1;
+        num = num/10;
+    }
+}
+
+
+
+
+digitPos
+
+int digitPos1(int num, int digit) 
+{
+   /* Write your code here */
+   int pos=0;
+   do {
+      pos++;
+      if (num % 10 == digit)
+         return pos;
+      num = num / 10;
+   } while (num > 0);
+   return 0;
+}
+void digitPos2(int num, int digit, int *result) 
+{
+   /* Write your code here */
+   int pos=0;
+   *result=0;
+   do {
+      pos++;
+      if (num % 10 == digit){
+         *result = pos;
+         break;
+      }
+      num = num / 10;
+   } while (num > 0);   
+}
+
+
+rDigitValue1
+
+int rDigitValue1(int num, int k)
+{
+   /* Write your code here */
+   if (k==0) 
+      return 0;
+   else if (k==1) 
+      return num%10; 
+   else 
+      return rDigitValue1(num/10, k -1);
+}
