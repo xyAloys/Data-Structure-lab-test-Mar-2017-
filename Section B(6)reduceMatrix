@@ -32,14 +32,12 @@ void readMatrix(int M[4][4])
 }
 void reduceMatrix(int matrix[4][4])
 {
-	int i, j,k;
-	for (k = 0; k < 3;k++)
-	for (i = 0; i<4; i++)
-	for (j = 0; j<4; j++)
-	if (i>0){
-		if ((i == 1 && j == 0) || (i == 2 && j<2) || (i == 3 && j<3))
+	int i, j;
+	for (j = 0; j < 4; j++)
+	for (i = j + 1; i < 4; i++)
+	{
 		{
-			matrix[i-1][j] += matrix[i][j];
+			matrix[j][j] += matrix[i][j];
 			matrix[i][j] = 0;
 		}
 	}
