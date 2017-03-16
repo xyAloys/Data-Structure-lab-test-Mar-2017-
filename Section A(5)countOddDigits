@@ -12,36 +12,26 @@ int main()
 	scanf("\n", &number);
 	return 0;
 }
-int countOddDigits1(int num)
+iint countOddDigits1(int num)
 {
-	int temp;
 	int count = 0;
 	while (num != 0)
 	{
-		temp = num % 10;
-
-		if (temp % 2 != 0)
-		{
-			count++;
+		if ((num % 10) % 2 == 1) {
+			count += 1;
 		}
-		num = num / 10;
+		num /= 10;
 	}
 	return count;
 }
-void countOddDigits2(int num, int *result)
+void countOddDigits2(int num, int *count)
 {
-	int temp;
-	int count = 0;
+	*count = 0;
 	while (num != 0)
 	{
-		temp = num%10;
-		
-		if (temp % 2 != 0)
-		{
-			count++;
+		if ((num % 10) % 2 == 1) {
+			*count += 1;
 		}
-		num = num / 10;
+		num /= 10;
 	}
-	*result = count;
-	return;
 }
