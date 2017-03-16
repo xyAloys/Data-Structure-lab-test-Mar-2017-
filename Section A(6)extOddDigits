@@ -12,46 +12,36 @@ int main()
 	scanf("\n", &number);
 	return 0;
 }
-int countOddDigits1(int num) 
-	{
-	int temp,odd=0;
-	int reverse=0;
-	while (num != 0)
-	{
-		temp= num % 10;
-		if (temp % 2 !=0)
-		{
-			reverse = reverse * 10 + temp;
-		} 
-		num = num / 10;
-	}
-	while (num == 0 && reverse != 0)
-	{
-		odd = odd * 10;
-		odd = odd + reverse % 10;
-		reverse = reverse / 10;
-	}
-	return odd;
-	} 
-void countOddDigits2(int num, int *result) 
- {
-	int temp, odd = 0;
-	int reverse = 0;
-	while (num != 0)
-	{
-		temp = num % 10;
-		if (temp % 2 != 0)
-		{
-			reverse = reverse * 10 + temp;
+int extOddDigits1(int num)
+{
+	int power = 1;
+	int total = 0;
+	int digit;
+	while (num > 0) {
+		digit = num % 10;
+		num /= 10;
+		if ((digit % 2) == 1) {
+			total += digit * power;
+			power *= 10;
 		}
-		num = num / 10;
 	}
-	while (num == 0 && reverse != 0)
-	{
-		odd = odd * 10;
-		odd = odd + reverse % 10;
-		reverse = reverse / 10;
+	return (power == 1) ? 0 : total;
+}
+void extOddDigits2(int num, int *result)
+{
+	int power = 1;
+	int total = 0;
+	int digit;
+	while (num > 0) {
+		digit = num % 10;
+		num /= 10;
+		if ((digit % 2) == 1) {
+			total += digit * power;
+			power *= 10;
+		}
 	}
-	*result = odd;
-	return;
-}  
+	if (power == 1)
+		*result = 0;
+	else
+		*result = total;
+}
