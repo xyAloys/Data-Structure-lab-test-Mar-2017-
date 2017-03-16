@@ -13,68 +13,25 @@ return 0;
 }
 float power1(float num, int p)
 {
-	int i;
-	float temp=1;
-	while (p != 0)
-	{
-		temp = num;
-		if (p > 0)
-		{
-			p--;
-			for (i = 0; i <p; p--)
-			{
-				temp = num*temp;
-			}
-		}
-		else
-		{
-			p++;
-			for (i = 0; i >p; p++)
-			{
-				if (p == -1)
-				{
-					temp = 1 / (num*temp);
-				}
-				else
-				{
-					temp = num*temp;
-				}
-			}
-		}
-	}
-	return temp;
-} 
+	float result;
+	result = 1;
+	if (p == 0)
+		return 1;
+	else if (p < 0)
+	while (p++) result *= 1.0 / num;
+	else
+	while (p--) result *= num;
+	return result;
+}
 void power2(float num, int p, float *result)
 {
-	int i;
-	float temp = 1;
-	while (p != 0)
-	{
-		temp = num;
-		if (p > 0)
-		{
-			p--;
-			for (i = 0; i <p; p--)
-			{
-				temp = num*temp;
-			}
-		}
-		else
-		{
-			p++;
-			for (i = 0; i >p; p++)
-			{
-				if (p == -1)
-				{
-					temp = 1 / (num*temp);
-				}
-				else
-				{
-					temp = num*temp;
-				}
-			}
-		}
-	}
-	*result = temp;
-	return;
+	*result = 1;
+	if (p == 0)
+		*result = 1;
+	else if (p < 0)
+	while (p++)
+		*result *= 1.0 / num;
+	else
+	while (p--)
+		*result *= num;
 }
