@@ -14,11 +14,12 @@ int main()
 	scanf("\n");
 	return 0;   
 }
-float absoluteSum(int size, float vector[]) 
-{
-	int i;
-	float sum=0;
-	for (i = 0; i < size; i++)
-		sum = vector[i] + sum;
+float absoluteSum(int size, float vector[]) {
+	float sum = 0;
+	int j;
+	for (j = 0; j < size; j++) {
+		sum += fabs(*vector);
+		vector++;
+	}
 	return sum;
-}  
+}
